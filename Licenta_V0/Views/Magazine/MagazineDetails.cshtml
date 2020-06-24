@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Licenta_V0.Models.MagazineModels>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th class="col-md-4">
+            @Html.DisplayNameFor(model => model.MagazineName)
+        </th>
+
+        <th class="col-md-2"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MagazineName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Download", "DownloadMagazine", new { id = item.Id })
+                @if (this.User.IsInRole("Editorial") || this.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+
+    }
+
+</table>  

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Licenta_V0.Models.ArticleModels>
+
+<h2>@Licenta_V0.Resources.MainNavbar.Articles</h2>
+
+@foreach (var i in Model)
+{
+<div>
+    @Html.ActionLink(i.ArticleName, "Show", "Article", new { id = i.Id }, null)
+    @Html.Label(i.AuthorName)
+</div>
+}
+
+
