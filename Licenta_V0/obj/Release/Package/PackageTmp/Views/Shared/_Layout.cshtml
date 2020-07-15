@@ -8,7 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="mainCointainer">
+    <div>@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "brandImg" })</div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,25 +18,44 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Home, "Index", "Home")</li>
                     <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.About, "About", "Home")</li>
-                    <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Contact, "Contact","Home")</li>
-                    <li>@Html.ActionLink("English", "Change", "Language", new { LanguageAbbrevation = "en" }, null)</li>
-                    <li>@Html.ActionLink("Română", "Change", "Language", new { LanguageAbbrevation = "ro" },null)</li>
+                    <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Contact, "Contact", "Home")</li>
+                    <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Magazine, "Index", "Magazine")</li>
+                    <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Articles, "Articles", "Home")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
+                <div class=" top-right pull-right">
+                    @Html.ActionLink("English", "Change", "Language", new { LanguageAbbrevation = "en" }, new { @class = "flagEnImg" })
+                    @Html.ActionLink("Română", "Change", "Language", new { LanguageAbbrevation = "ro" }, new { @class = "flagRoImg" })
+                </div>
+
+
             </div>
+            
         </div>
+        
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="background-color:azure" >
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="redirectContainer">
+                
+            <form action="https://www.facebook.com/bratianu.science" >
+                <input class="redirectToFacebook" type="submit" value="Go to Facebook" />
+                
+            </form>
+            <form action="https://www.instagram.com/ssbratianu/">
+                <input class="redirectToInstagram" type="submit" value="Go to Instagram" />
+            </form>
+            </div>
+            
         </footer>
     </div>
 

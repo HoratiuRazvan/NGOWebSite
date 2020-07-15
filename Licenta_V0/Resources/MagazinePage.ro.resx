@@ -126,6 +126,12 @@
   <data name="Magazine" xml:space="preserve">
     <value>Revistă</value>
   </data>
+  <data name="par1" xml:space="preserve">
+    <value>Una dintre manifestările Societății Științifice Ion C. Brătianu este publicarea periodică a revistei sale. Aceasta conține atât articole științifice cât și literare scrise de membrii SSB.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
   <data name="Upload" xml:space="preserve">
     <value>Încarcă</value>
   </data>

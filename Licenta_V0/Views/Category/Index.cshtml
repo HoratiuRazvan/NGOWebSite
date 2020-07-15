@@ -1,0 +1,23 @@
+﻿
+
+<h2>@Licenta_V0.Resources.CategoryPage.CategoriesTitle</h2>
+<br />
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+@foreach (var category in ViewBag.Categories)
+{
+    @Html.Label("CategoryName",Licenta_V0.Resources.CategoryPage.CategoryName)
+    <p>@category.CategoryName</p>
+    <a class="btn btn-success" href="/Category/Show/@category.Id">@Licenta_V0.Resources.CategoryPage.ShowCategory</a>
+    <a class="btn btn-success" href="/Category/Edit/@category.Id">@Licenta_V0.Resources.CategoryPage.EditCategory</a>
+    <br />
+    <hr />
+    <br />
+}
+<br />
+<a class="btn btn-info" href="/Category/New">@Licenta_V0.Resources.CategoryPage.AddCategory</a>
+<br />

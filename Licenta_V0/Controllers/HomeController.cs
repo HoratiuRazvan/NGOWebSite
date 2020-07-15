@@ -15,7 +15,10 @@ namespace Licenta_V0.Controllers
         {
             return View();
         }
-
+        public ActionResult EditHomePage()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             return View();
@@ -35,6 +38,14 @@ namespace Licenta_V0.Controllers
             var mag = context.Magazines.ToList();
             return View(mag);
         }
-        
+        public ActionResult EditHome()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult Management()
+        {
+            return View();
+        }
     }
 }

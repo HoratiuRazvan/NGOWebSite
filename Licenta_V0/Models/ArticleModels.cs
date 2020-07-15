@@ -20,6 +20,7 @@ namespace Licenta_V0.Models
         public String ArticleText { get; set; }
         public String ArticleDescription { get; set; }
         public DateTime ArticleDate { get; set; }
+        public byte[] ArticleImages { get; set; }
         [Required]
         public int CategoryId { get; set; }
         //public IEnumerable<SelectListItem> Categories { get; set; }

@@ -120,6 +120,15 @@
   <data name="Motto" xml:space="preserve">
     <value>Reunind elita colegiului nostru - ale cărei forțe le îndreaptă către un scop comun, Societatea Științifică Brătianu își propune să atragă generația de astăzi spre cunoaștere, spre știință și spre cultură.</value>
   </data>
+  <data name="par1" xml:space="preserve">
+    <value>A fost odata ca niciodata… Așa încep poveștile clasice, dar cea a Societății Științifice Brătianu a fost diferită, controversată, a avut un alt fel de început. Deloc asemănătoare cu celelalte asociații, SSB a pornit de la discuțiile, certurile, visurile si planurile câtorva prieteni de clasă, colegi, dornici de a revoluționa sistemul, modul de gândire, percepțiile, poate chiar lumea. S-a dus vorba în tot Colegiul și numărul membriilor a început să crească, tot mai mulți elevi devenind, astffel, mâinile care scriu istoria.</value>
+  </data>
+  <data name="par2" xml:space="preserve">
+    <value>Așa a început propriu-zis povestea noastră, care a continuat și continuă să se scrie frumos în fiecare zi. Nimic nu este imposibil, așa se spune, iar când cineva își dorește ceva cu adevărat, reușește, iar Societatea asta își propune: să reușească. Ce să reușească? Să promoveze ideile în care crede: că știința e în multe feluri, doar nu plictisitoare, că noi suntem cei care trebuie să schimbăm ceva, că doar așteptând, nu se rezolvă nimic și că totul depinde de noi. Că putem să învățăm o mulțime de lucruri unii de la alții și că orice domeniu poate deveni fascinant, privit din unghiul potrivit.</value>
+  </data>
+  <data name="par3" xml:space="preserve">
+    <value>Și… Cum reușim? Cu multă pasiune, muncă, o echipă de oameni determinați în spate, mai bine zis o familie, cu puterea de a spera, cu încredere în forțele noastre. Cu urcușuri și coborâșiuri, SSB nu se oprește aici, ci continuă, preferând sa nu închidă ochii, ci să lupte împotriva curentului actual de nedreptate. Aceștia suntem noi: o generație care gândește independent și care își croiește propriul drum până la capăt.</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Societatea Științifică Brătianu</value>
   </data>

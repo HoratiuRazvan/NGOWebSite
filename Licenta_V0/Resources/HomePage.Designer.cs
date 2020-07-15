@@ -70,6 +70,33 @@ namespace Licenta_V0.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Once upon a time... this is how classic stories begin, but Bratianu Scientific Society&apos;s story was different, controversial; it had another kind of beginning. Nothing similar to other associations, BSS started from the discussions, fights, dreams and plans of few classmates, colleagues, willing to revolutionize the current system, the way of thinking, the perceptions, maybe even the world. The word spread throughout the College and the number of members rapidly increased, more and more pupils becoming the h [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string par1 {
+            get {
+                return ResourceManager.GetString("par1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is how our story began, it went on and it keeps writing itself beautifully everyday. Nothing is impossible -- that is what people say -- and when you truly want something, you succeed. This is what the Society intends: to succeed. What exactly? To promote the idea it believes in: that science is everything but boring, that we are the ones to change something, that waiting does not solve anything and that everything depends on us. We can learn and teach others lots of things and every field can be fasci [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string par2 {
+            get {
+                return ResourceManager.GetString("par2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to And... how do we succeed? With a lot of passion, hard work, a strong team behind it, a family in other words, with hope in our future and trust in our hands. With ups and downs, BSS does not stop here, it goes on, fighting agains current injustice. This is who we are: a new generation that thinks independently and build its own path until the end..
+        /// </summary>
+        public static string par3 {
+            get {
+                return ResourceManager.GetString("par3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bratianu Scientific Society.
         /// </summary>
         public static string Title {

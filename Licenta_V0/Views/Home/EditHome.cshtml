@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "EditHome";
+}
+
+<h2>EditHome</h2>
+
+@using (Html.BeginForm(actionName: "EditHome", controllerName: "Home"))
+{
+    @Html.Editor("Title")
+    @Licenta_V0.Resources.HomePage.Motto = "ss";
+}
+

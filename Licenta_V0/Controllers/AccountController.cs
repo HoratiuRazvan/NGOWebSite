@@ -9,17 +9,91 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Licenta_V0.Models;
+using Microsoft.Ajax.Utilities;
+using System.Collections.Generic;
 
 namespace Licenta_V0.Controllers
 {
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
+        public ActionResult ShowUsers()
+        {
+            if (User.Identity.Name != "admin@admin.com")
+                return HttpNotFound();
+            var viewModel = new ShowUsersViewModels
+            {
+                Users = _context.Users.ToList(),
+                Roles = new List<String>()
+            };
+            foreach (var user in viewModel.Users)
+            {
+                if (UserManager.IsInRole(user.Id, "User"))
+                {
+                    viewModel.Roles.Add("User");
+                }
+                else
+                {
+                    viewModel.Roles.Add("Admin");
+                }
+            }
 
+            var index = viewModel.Users.FindIndex(c => c.UserName == "admin@admin.com");
+            viewModel.Users.RemoveAt(index);
+            viewModel.Roles.RemoveAt(index);
+
+            return View(viewModel);
+        }
+        public async Task<ActionResult> DeleteUser(string Iden)
+        {
+            if (User.Identity.Name != "admin@admin.com")
+                return HttpNotFound();
+
+            var user = _context.Users.SingleOrDefault(c => c.Id == Iden);
+            if (user == null)
+                return HttpNotFound();
+
+            await UserManager.RemoveFromRoleAsync(user.Id, "User");
+            await UserManager.RemoveFromRoleAsync(user.Id, "Admin");
+
+
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+
+            return RedirectToAction("ShowUSers");
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult ChangeRole(string Iden)
+        {
+            if (User.Identity.Name != "admin@admin.com")
+                return HttpNotFound();
+
+            var user = _context.Users.SingleOrDefault(c => c.Id == Iden);
+            if (UserManager.IsInRole(user.Id, "User"))
+            {
+                UserManager.RemoveFromRole(user.Id, "User");
+                UserManager.AddToRole(user.Id, "Admin");
+            }
+            else
+            {
+                UserManager.RemoveFromRole(user.Id, "Admin");
+                UserManager.AddToRole(user.Id, "User");
+            }
+
+            return RedirectToAction("ShowUsers");
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult RegisteredUsers()
+        {
+            return View();
+        }
         public AccountController()
         {
+           _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -421,6 +495,7 @@ namespace Licenta_V0.Controllers
             }
 
             base.Dispose(disposing);
+            _context.Dispose();
         }
 
         #region Helpers

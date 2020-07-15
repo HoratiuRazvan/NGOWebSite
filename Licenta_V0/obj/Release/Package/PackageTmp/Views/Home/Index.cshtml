@@ -1,9 +1,15 @@
-﻿@{
-    ViewBag.Title = "Societatea Științifică Brătianu";
-}
+﻿
 
-<div class="glyphicon-bold">
-    <h1>@Licenta_V0.Resources.HomePage.Title</h1>
+<div style="padding-bottom: 50px; text-align:center; font-family:'Comic Sans MS'; font-size:200%">
+    <h1 style="font-size:200%   ">@Licenta_V0.Resources.HomePage.Title</h1>
 </div>
+<div class=" text-center" , style="font-size: 180%; color: maroon;padding-bottom:7rem">@Licenta_V0.Resources.HomePage.Motto</div>
 
-<div class="text-center">@Licenta_V0.Resources.HomePage.Motto </div>
+<div class=" text-center" style="font-size: 135%; padding-bottom:5rem">@Licenta_V0.Resources.HomePage.par1</div>
+<div class="text-center" style="font-size: 135%; padding-bottom:5rem">@Licenta_V0.Resources.HomePage.par2</div>
+<div class=" text-center" style="font-size: 135%">@Licenta_V0.Resources.HomePage.par3</div>
+
+@if (this.User.IsInRole("Editorial") || this.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("EditHome", "EditHome")
+}

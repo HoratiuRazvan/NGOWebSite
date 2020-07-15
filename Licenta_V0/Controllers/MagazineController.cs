@@ -26,15 +26,6 @@ namespace Licenta_V0.Controllers
         {
             return View();
         }
-        public ActionResult Download(int id)
-        {
-            var mag = context.Magazines.SingleOrDefault(m => m.Id == id);
-            if (mag == null)
-            {
-                return HttpNotFound();
-            }
-            return Redirect("~/PDF/" + mag.MagazineName);
-        }
         public ActionResult MagazineUpload()
         {
             return View();
@@ -43,7 +34,8 @@ namespace Licenta_V0.Controllers
         [Authorize(Roles = "Admin,Editorial")]
         public ActionResult MagazineUpload(HttpPostedFileBase files)
         {
-
+            if (files == null)
+                return HttpNotFound();
             String FileExt = Path.GetExtension(files.FileName).ToUpper();
 
             if (FileExt == ".PDF")
@@ -100,6 +92,7 @@ namespace Licenta_V0.Controllers
             con.Close();
             return DetList;
         }
+
         [Authorize(Roles = "Admin,Editorial")]
         private void SaveMagazineDetails(MagazineModels objDet)
         {
@@ -130,18 +123,17 @@ namespace Licenta_V0.Controllers
         public ActionResult Edit(int id, MagazineModels requestMagazine)
         {
             var mag = context.Magazines.Find(id);
-            if(TryUpdateModel(mag))
+            if (TryUpdateModel(mag))
             {
                 mag.MagazineDescription = requestMagazine.MagazineDescription;
                 mag.MagazineName = requestMagazine.MagazineName;
                 //mag.PublishDate = requestMagazine.PublishDate;
                 context.SaveChanges();
             }
-            
+
             return RedirectToAction("Index");
 
         }
-        
         [Authorize(Roles = "Admin,Editorial")]
         public ActionResult Delete(int id)
         {

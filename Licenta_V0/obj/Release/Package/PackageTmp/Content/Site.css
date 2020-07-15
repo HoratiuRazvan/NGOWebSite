@@ -22,3 +22,62 @@ select,
 textarea {
     max-width: 280px;
 }
+
+a.flagRoImg {
+    background: url(../Content/Images/flag_ro.png);
+    display: block;
+    width: 30px;
+    height: 20px;
+    text-indent: -9999px;
+    margin-top: 3px;
+}
+a.flagEnImg {
+    background: url(../Content/Images/flg_gb.png);
+    display: block;
+    width: 30px;
+    height: 20px;
+    text-indent: -9999px;
+    margin-top:4px;
+}
+
+a.brandImg {
+    background:url(../Content/Images/SSBImage.png);
+    display:block;
+    width:181px;
+    height:182px;
+    text-indent:-9999px;
+}
+.redirectToFacebook {
+    background: url(../Content/Images/FacebookImage.png);
+    display:inline;
+    width: 60px;
+    height: 60px;
+    text-indent: -9999px;
+    margin-left:42%;
+    border: none;
+    
+}
+.redirectToInstagram {
+    background: url(../Content/Images/InstagramImage.png);
+    display: inline;
+    width: 60px;
+    height: 60px;
+    text-indent: -9999px;
+    border: none;
+    
+}
+.redirectContainer form,
+.redirectContainer form input {
+    display: inline;
+    text-align: center;
+}
+
+.redirectContainer {
+    display: inline;
+    vertical-align: middle;
+    margin: auto;
+    
+}
+.mainCointainer {
+    background-image: linear-gradient(to bottom right, DeepSkyBlue, DarkSlateBlue)
+}

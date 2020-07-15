@@ -106,7 +106,7 @@ namespace Licenta_V0.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phone.
+        ///   Looks up a localized string similar to Phone: +40743428389.
         /// </summary>
         public static string ContactPhone {
             get {

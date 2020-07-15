@@ -88,6 +88,15 @@ namespace Licenta_V0.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One of the many goals of Bratianu Scientific Society is to publish its magazine. It has both scientific and literary articles written by the members of the society. Unfortunately, for now the magazine is not translated in english, but we are working to solve this problem..
+        /// </summary>
+        public static string par1 {
+            get {
+                return ResourceManager.GetString("par1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload.
         /// </summary>
         public static string Upload {

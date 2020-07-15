@@ -1,0 +1,29 @@
+﻿@model Licenta_V0.Models.ArticleModels
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Article"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(m => m.Id)
+    <br />
+    @Html.Label("MagazineName", "Magazine Name")
+    <br />
+    @Html.Editor("MagazineName")
+    @Html.ValidationMessageFor(m => m.ArticleName, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("MagazineDescription", "Magazine Description")
+    <br />
+    @Html.Editor("MagazineDescription")
+    @Html.ValidationMessageFor(m => m.ArticleDescription, "", new { @class = "text-danger" })
+
+    <br />
+    <br />
+
+    @Html.HiddenFor(m => m.ArticleDate)
+    <br />
+
+    <button class="btn btn-sm btn-success" type="submit">Modify Magazine</button>
+}

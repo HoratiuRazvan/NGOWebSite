@@ -1,13 +1,76 @@
-﻿@model IEnumerable<Licenta_V0.Models.ArticleModels>
+﻿@model List<Licenta_V0.Models.ArticleModels>
 
 <h2>@Licenta_V0.Resources.MainNavbar.Articles</h2>
 
-@foreach (var i in Model)
-{
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Data de start</td>
+            <td><input class="form-control input-sm" type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Data de final</td>
+            <td><input class="form-control input-sm" type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
 <div>
-    @Html.ActionLink(i.ArticleName, "Show", "Article", new { id = i.Id }, null)
-    @Html.Label(i.AuthorName)
+    <table id="articole" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Titlu</th>
+                <th>Autor</th>
+                <th>Descriere</th>
+                <th>Data adaugarii</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr id=" @Model.FindIndex(p=>p.Id == post.Id)">
+                    <td>
+                        @Html.ActionLink(post.ArticleName, "Show", "Post", new { id = post.Id }, null)
+                    </td>
+                    <td>@post.AuthorName</td>
+                    <td>@post.ArticleDescription</td>
+                    <td>@post.ArticleDate.ToString("d")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-}
 
+<script>
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
 
+            var min = parseInt($('#min').val(), 10);
+            var max = parseInt($('#max').val(), 10);
+            var pret = parseFloat(data[1]) || 0;
+
+            if ((isNaN(min) && isNaN(max)) ||
+                (isNaN(min) && pret <= max) ||
+                (min <= pret && isNaN(max)) ||
+                (min <= pret && pret <= max)) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    $(document).ready(function () {
+        var dataTableInstance = $("#articole").DataTable();
+        $('#min, #max').keyup(function () {
+            dataTableInstance.draw();
+        });
+    });
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#min").datepicker();
+    });
+</script>

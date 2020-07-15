@@ -12,7 +12,7 @@ namespace Licenta_V0.Models
         [Required]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Uploaded File")]
+        
         public String MagazineName { get; set; }
         public String MagazineDescription { get; set; } 
         public DateTime PublishDate { get; set; }

@@ -1,0 +1,22 @@
+﻿@model Licenta_V0.Models.CategoryModels
+
+
+<h2>@Licenta_V0.Resources.CategoryPage.ShowCategory</h2>
+
+<p>@Model.CategoryName</p>
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Category", routeValues: new { id = @Model.Id }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    if (this.User.IsInRole("Admin") || this.User.IsInRole("Editorial"))
+    {
+        <button id="submitButton" class="btn btn-success" type="submit" >@Licenta_V0.Resources.CategoryPage.DeleteCategory</button>
+    }
+}
+<br />
+<a class="btn btn-success" href="/Category/Index/" >@Licenta_V0.Resources.CategoryPage.ShowCategories</a>
+
+<br />
+<hr />
+<br />
+

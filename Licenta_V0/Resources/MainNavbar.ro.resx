@@ -129,11 +129,17 @@
   <data name="Home" xml:space="preserve">
     <value>Acasă</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Limbă</value>
+  </data>
   <data name="Login" xml:space="preserve">
-    <value>Logare</value>
+    <value>Autentificare</value>
   </data>
   <data name="Magazine" xml:space="preserve">
     <value>Revistă</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>Administrare</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Înregistrare</value>

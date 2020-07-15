@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Licenta_V0.Models.ApplicationUser>
+
+<h2>Utilizatori inregistrati:</h2>
+
+@foreach (var user in Model)
+{
+    <div>
+        
+        @user.UserName  @Html.ActionLink("Schimba rolul", "ChangeRole", "Account", new { Iden = user.Id }, null)
+    </div>
+}
