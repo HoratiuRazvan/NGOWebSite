@@ -1,0 +1,24 @@
+﻿@model Licenta_V0.Models.NewTeamViewModel
+
+
+<h2>Formular pentru echipa:</h2>
+
+@using (Html.BeginForm("Save", "Team"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Team.Title)
+        @Html.TextBoxFor(m => m.Team.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Team.Title)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Team.TeamLeaderId)
+        @Html.DropDownListFor(m => m.Team.TeamLeaderId, new SelectList(Model.Users, "Id", "UserName"), "Selecteaza liderul", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Team.TeamLeaderId)
+    </div>
+
+    @Html.HiddenFor(m => m.Team.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

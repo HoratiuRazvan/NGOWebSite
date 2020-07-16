@@ -20,9 +20,11 @@ namespace Licenta_V0.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<ArticleModels> Articles{get;set; }
+        public DbSet<ArticleModels> Articles { get; set; }
         public DbSet<CategoryModels> Categories { get; set; }
         public DbSet<MagazineModels> Magazines { get; set; }
+        public DbSet<TeamModels> Teams { get; set; }
+        public DbSet<MemberModels> Members { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -33,6 +35,6 @@ namespace Licenta_V0.Models
         {
             return new ApplicationDbContext();
         }
-        
+
     }
 }

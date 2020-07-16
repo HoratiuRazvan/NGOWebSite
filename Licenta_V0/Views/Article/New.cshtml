@@ -1,68 +1,43 @@
-﻿@model Licenta_V0.Models.ContentViewModels
-@{
-    ViewBag.Title = "Create";
+﻿@model Licenta_V0.Models.ArticleModels
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Article"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    <br />
+    @Html.Label("ArticleName", "Article Name")
+    <br />
+    @Html.EditorFor(m => m.ArticleName)
+    @Html.ValidationMessageFor(m => m.ArticleName, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("AuthorName", "Author Name")
+    <br />
+    @Html.EditorFor(m => m.AuthorName)
+    @Html.ValidationMessageFor(m => m.AuthorName, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("ArticleDescription", "Article Description")
+    <br />
+    @Html.EditorFor(m => m.ArticleDescription)
+    @Html.ValidationMessageFor(m => m.ArticleDescription, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("ArticleDate", "Article Date")
+    <br />
+    @Html.EditorFor(m => m.ArticleDate)
+    @Html.ValidationMessageFor(m => m.ArticleDescription, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("ArticleText", "Article Text")
+    <br />
+    <div>
+        @Html.EditorFor(m => m.ArticleText)
+        @Html.ValidationMessageFor(m => m.ArticleText, "", new { @class = "text-danger" })
+
+    </div>
+
+    <br />
+   
+
+    <button class="btn btn-sm btn-success" type="submit">Add article</button>
 }
-
-<script src="~/ckeditor/ckeditor.js"></script>
-<script src="~/ckeditor/adapters/jquery.js"></script>
-
-<h2>Create New Content With Image</h2>
-
-@*<script type="text/javascript">
-        function fileCheck(obj) {
-            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-            if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-                alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
-            }
-        }
-    </script>
-
-@*
-    @using (Html.BeginForm("New", "Articles", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Content</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ArticleName, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.ArticleName, new { @class = "form-control", placeholder = "Content Title" })
-                    @Html.ValidationMessageFor(model => model.ArticleName)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ArticleImages, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
-                    @Html.ValidationMessageFor(model => model.ArticleImages)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ArticleDescription, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.ArticleDescription, new { @class = "form-control", placeholder = "Content Description" })
-                    @Html.ValidationMessageFor(model => model.ArticleDescription)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ArticleText, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.ArticleText, new { @class = "ckeditor", placeholder = "Content" })
-                    @Html.ValidationMessageFor(model => model.Contents)
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-*@

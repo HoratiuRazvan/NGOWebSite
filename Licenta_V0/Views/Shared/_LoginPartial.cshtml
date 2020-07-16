@@ -6,6 +6,11 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole("Admin"))
+        {
+            <li>@Html.ActionLink("Utilizatori", "ShowUsers", "Account", null, null)</li>
+        }
+
         <li>
             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
@@ -16,6 +21,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+       
         <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Licenta_V0.Models.TeamModels>
+
+
+@Html.ActionLink("Adauga echipa", "New", "Team", null, new { @class="btn btn-primary"})
+<h2>Echipe:</h2>
+
+@foreach(var team in Model)
+{
+    <div>Nume echipa: @Html.ActionLink(team.Title, "Show", "Team", new { id = team.Id }, null) Lider: @team.TeamLeader.UserName</div>
+}
+

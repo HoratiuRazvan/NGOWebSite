@@ -1,11 +1,16 @@
-﻿@model IEnumerable<Licenta_V0.Models.ApplicationUser>
+﻿@model Licenta_V0.Models.ShowUsersViewModels
 
 <h2>Utilizatori inregistrati:</h2>
 
-@foreach (var user in Model)
+@for (var i = 0; i < Model.Users.Count; i++)
 {
-    <div>
-        
-        @user.UserName  @Html.ActionLink("Schimba rolul", "ChangeRole", "Account", new { Iden = user.Id }, null)
-    </div>
+    <div>Nume: @Model.Users[i].UserName</div>
+    <div>Rol: @Model.Roles[i]</div>
+    @Html.ActionLink("Schimba rolul", "ChangeRole", "Account", new { Iden = Model.Users[i].Id }, new { @class = "btn btn-primary" });
+    using (Html.BeginForm(actionName: "DeleteUser", controllerName: "Account", method: FormMethod.Post, routeValues: new { Iden = Model.Users[i].Id }))
+    {
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button class="btn btn-primary" type="submit">Sterge utilizatorul</button>
+    }
+    <br />
 }

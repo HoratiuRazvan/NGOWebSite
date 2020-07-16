@@ -29,7 +29,7 @@
             {
                 <tr id=" @Model.FindIndex(p=>p.Id == post.Id)">
                     <td>
-                        @Html.ActionLink(post.ArticleName, "Show", "Post", new { id = post.Id }, null)
+                        @Html.ActionLink(post.ArticleName, "Show", "Article", new { id = post.Id }, null)
                     </td>
                     <td>@post.AuthorName</td>
                     <td>@post.ArticleDescription</td>
@@ -39,38 +39,33 @@
         </tbody>
     </table>
 </div>
-
-<script>
-    $.fn.dataTable.ext.search.push(
-        function (settings, data, dataIndex) {
-
-            var min = parseInt($('#min').val(), 10);
-            var max = parseInt($('#max').val(), 10);
-            var pret = parseFloat(data[1]) || 0;
-
-            if ((isNaN(min) && isNaN(max)) ||
-                (isNaN(min) && pret <= max) ||
-                (min <= pret && isNaN(max)) ||
-                (min <= pret && pret <= max)) {
-                return true;
+@section scripts{
+    
+    <script>
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+               
+                var min = $('#min').val();
+                var max = $('#max').val();
+                var  date = data[3];
+                if ((min == "" && max=="") ||
+                    (min == "" && Date.parse(date) <= Date.parse(max)) ||
+                    (Date.parse(min) <= Date.parse(date) && max == "") ||
+                    (Date.parse(min) <= Date.parse(date) && Date.parse(date) <= Date.parse(max))) {
+                    return true;
+                }
+                return false;
             }
-            return false;
-        }
-    );
+        );
 
-    $(document).ready(function () {
-        var dataTableInstance = $("#articole").DataTable();
-        $('#min, #max').keyup(function () {
-            dataTableInstance.draw();
+        $(document).ready(function () {
+            var dataTableInstance = $("#articole").DataTable();
+           
+            $('#min, #max').change(function () {
+                dataTableInstance.draw();
+            });
+            $("#min").datepicker();
+            $("#max").datepicker();
         });
-    });
-</script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $(function () {
-        $("#min").datepicker();
-    });
-</script>
+    </script>
+}

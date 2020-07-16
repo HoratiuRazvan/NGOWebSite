@@ -15,7 +15,8 @@ namespace Licenta_V0.Controllers
         // GET: Article
         public ActionResult Index()
         {
-            return View();
+            var art = context.Articles.ToList();
+            return View(art);
         }
         public ActionResult Show(int id)
         {
@@ -69,21 +70,22 @@ namespace Licenta_V0.Controllers
             }
             return RedirectToAction("Index");
         }
-        [HttpPost]
         [Authorize(Roles = "Admin,Editorial")]
         public ActionResult New()
         {
-            return View();
+            var viewModel = new ArticleModels
+                {
+                    ArticleDate = DateTime.Now
+                }
+            ;
+            return View(viewModel);
         }
-        public ActionResult New(ContentViewModels model)
+        [HttpPut]
+        [Authorize(Roles = "Admin,Editorial")]
+        public ActionResult New(ArticleModels article)
         {
-            /*HttpPostedFileBase file = Request.Files["ImageData"];
-            int i = UploadImageInDataBase(file, model);
-            if (i == 1)
-            {
-                return RedirectToAction("Index");
-            }*/
-            return View(model);
+            
+            return View();
         }
         public int UploadImageInDataBase(HttpPostedFileBase file, ContentViewModels contentViewModel)
         {

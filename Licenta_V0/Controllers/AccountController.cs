@@ -32,13 +32,13 @@ namespace Licenta_V0.Controllers
             };
             foreach (var user in viewModel.Users)
             {
-                if (UserManager.IsInRole(user.Id, "User"))
+                if (UserManager.IsInRole(user.Id, "Editorial"))
                 {
-                    viewModel.Roles.Add("User");
+                    viewModel.Roles.Add("Editorial");
                 }
                 else
                 {
-                    viewModel.Roles.Add("Admin");
+                    viewModel.Roles.Add("Member");
                 }
             }
 
@@ -46,7 +46,7 @@ namespace Licenta_V0.Controllers
             viewModel.Users.RemoveAt(index);
             viewModel.Roles.RemoveAt(index);
 
-            return View(viewModel);
+            return View("ChangeRole", viewModel);
         }
         public async Task<ActionResult> DeleteUser(string Iden)
         {
@@ -73,15 +73,15 @@ namespace Licenta_V0.Controllers
                 return HttpNotFound();
 
             var user = _context.Users.SingleOrDefault(c => c.Id == Iden);
-            if (UserManager.IsInRole(user.Id, "User"))
+            if (UserManager.IsInRole(user.Id, "Editorial"))
             {
-                UserManager.RemoveFromRole(user.Id, "User");
-                UserManager.AddToRole(user.Id, "Admin");
+                UserManager.RemoveFromRole(user.Id, "Editorial");
+                UserManager.AddToRole(user.Id, "Member");
             }
             else
             {
-                UserManager.RemoveFromRole(user.Id, "Admin");
-                UserManager.AddToRole(user.Id, "User");
+                UserManager.RemoveFromRole(user.Id, "Member");
+                UserManager.AddToRole(user.Id, "Editorial");
             }
 
             return RedirectToAction("ShowUsers");
@@ -93,10 +93,10 @@ namespace Licenta_V0.Controllers
         }
         public AccountController()
         {
-           _context = new ApplicationDbContext();
+            _context = new ApplicationDbContext();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -108,9 +108,9 @@ namespace Licenta_V0.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -194,7 +194,7 @@ namespace Licenta_V0.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -229,8 +229,8 @@ namespace Licenta_V0.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

@@ -1,0 +1,17 @@
+﻿@model Licenta_V0.Models.AddMemberViewModel
+
+<h2>@Model.Member.Team.Title</h2>
+
+@using (Html.BeginForm("SaveMember", "Team"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Member.MemberId)
+        @Html.DropDownListFor(m => m.Member.MemberId, new SelectList(Model.Users, "Id", "UserName"), "Selecteaza membrul", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Member.MemberId)
+    </div>
+
+    @Html.HiddenFor(m => m.Member.Id)
+    @Html.HiddenFor(m => m.Member.TeamId)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

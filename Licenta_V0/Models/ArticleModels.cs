@@ -16,8 +16,9 @@ namespace Licenta_V0.Models
         public String ArticleName { get; set; }
         [Required( ErrorMessage ="Autor obligatoriu")]
         public String AuthorName { get; set; }
-        [Required(ErrorMessage ="Articol gol")]
+        [UIHint("tinymce_jquery_full"), AllowHtml]
         public String ArticleText { get; set; }
+        
         public String ArticleDescription { get; set; }
         public DateTime ArticleDate { get; set; }
         public byte[] ArticleImages { get; set; }

@@ -1,0 +1,15 @@
+﻿@model Licenta_V0.Models.ShowTeamViewModel
+
+<h2>@Model.Team.Title</h2>
+
+<h3>Membrii:</h3>
+
+@foreach (var member in Model.Members)
+{
+    <div>@member.Member.UserName</div>
+}
+@if (Model.IsAdmin == true || Model.IsOwner == true)
+{
+    @Html.ActionLink("Editeaza", "Edit", "Team", new { id = Model.Team.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Adauga membru", "AddMember", "Team", new { id = Model.Team.Id }, new { @class = "btn btn-primary" })
+}

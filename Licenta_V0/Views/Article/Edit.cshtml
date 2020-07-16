@@ -8,16 +8,34 @@
 
     @Html.HiddenFor(m => m.Id)
     <br />
-    @Html.Label("MagazineName", "Magazine Name")
+    @Html.Label("ArticleName", "Article Name")
     <br />
-    @Html.Editor("MagazineName")
+    @Html.EditorFor(m => m.ArticleName)
     @Html.ValidationMessageFor(m => m.ArticleName, "", new { @class = "text-danger" })
     <br />
     <br />
-    @Html.Label("MagazineDescription", "Magazine Description")
+    @Html.Label("AuthorName", "Author Name")
     <br />
-    @Html.Editor("MagazineDescription")
+    @Html.EditorFor(m => m.AuthorName)
+    @Html.ValidationMessageFor(m => m.AuthorName, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("ArticleDescription", "Article Description")
+    <br />
+    @Html.EditorFor(m => m.ArticleDescription)
     @Html.ValidationMessageFor(m => m.ArticleDescription, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("ArticleDate", "Article Date")
+    <br />
+    @Html.EditorFor(m => m.ArticleDate)
+    @Html.ValidationMessageFor(m => m.ArticleDescription, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("ArticleText", "Article Text")
+    <br />
+    <div>
+        @Html.EditorFor(m => m.ArticleText)
+        @Html.ValidationMessageFor(m => m.ArticleText, "", new { @class = "text-danger" })
+
+    </div>
 
     <br />
     <br />
@@ -25,5 +43,5 @@
     @Html.HiddenFor(m => m.ArticleDate)
     <br />
 
-    <button class="btn btn-sm btn-success" type="submit">Modify Magazine</button>
+    <button class="btn btn-sm btn-success" type="submit">Modify Article</button>
 }

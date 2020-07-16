@@ -269,3 +269,5 @@ F:\Licenta\Licenta_V0\Licenta_V0\obj\Debug\Licenta_V0.Resources.ErrorAndConfirmM
 F:\Licenta\Licenta_V0\Licenta_V0\obj\Debug\Licenta_V0.Resources.CategoryPage.resources
 F:\Licenta\Licenta_V0\Licenta_V0\obj\Debug\Licenta_V0.Resources.CategoryPage.ro.resources
 F:\Licenta\Licenta_V0\Licenta_V0\obj\Debug\Licenta_V0.Resources.ManagementPage.resources
+F:\Licenta\Licenta_V0\Licenta_V0\obj\Debug\Licenta_V0.Migrations.articolAct.resources
+F:\Licenta\Licenta_V0\Licenta_V0\obj\Debug\Licenta_V0.Migrations.finalMig.resources
