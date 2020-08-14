@@ -27,18 +27,6 @@ namespace Licenta_V0.Controllers
             }
             return View(art);
         }
-        [HttpDelete]
-        [Authorize (Roles = "Admin,Editorial")]
-        public ActionResult Delete(int id)
-        {
-            var art = context.Articles.SingleOrDefault(m => m.Id == id);
-            if(art == null)
-            {
-                return HttpNotFound();
-            }
-            context.Articles.Remove(art);
-            return View("Index");
-        }
 
         [Authorize(Roles = "Admin,Editorial")]
         public ActionResult Edit(int id)
@@ -82,10 +70,25 @@ namespace Licenta_V0.Controllers
         }
         [HttpPut]
         [Authorize(Roles = "Admin,Editorial")]
-        public ActionResult New(ArticleModels article)
+        public ActionResult New(ArticleModels art)
         {
-            
-            return View();
+            art.CategoryId = 8;
+            if (TryUpdateModel(art))
+            {
+                context.Articles.Add(art);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        [Authorize(Roles ="Admin,Editorial")]
+        public ActionResult Delete(int id)
+        {
+            var art = context.Articles.SingleOrDefault(m => m.Id == id);
+            if (art == null)
+                return HttpNotFound();
+            context.Articles.Remove(art);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
         public int UploadImageInDataBase(HttpPostedFileBase file, ContentViewModels contentViewModel)
         {

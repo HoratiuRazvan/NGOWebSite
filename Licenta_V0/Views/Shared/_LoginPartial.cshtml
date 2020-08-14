@@ -8,7 +8,7 @@
     <ul class="nav navbar-nav navbar-right">
         @if (User.IsInRole("Admin"))
         {
-            <li>@Html.ActionLink("Utilizatori", "ShowUsers", "Account", null, null)</li>
+            <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Users, "ShowUsers", "Account", null, null)</li>
         }
 
         <li>
@@ -21,8 +21,8 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-       
-        <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeHqM-drgOapLR5D1z7kLH7MnMjehtuJvADoGl8zWdlvklTYg/viewform">@Licenta_V0.Resources.MainNavbar.Register</a></li>
+        @*<li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
         <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

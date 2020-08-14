@@ -39,6 +39,13 @@
         </tbody>
     </table>
 </div>
+<div>
+    @if (User.IsInRole("Admin") || User.IsInRole("Editorial"))
+    {
+        @Html.ActionLink("Adauga", "New", "Article", null, null)
+    }
+
+</div>
 @section scripts{
 
     <script>

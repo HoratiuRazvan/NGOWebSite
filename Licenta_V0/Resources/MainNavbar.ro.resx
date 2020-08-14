@@ -144,4 +144,7 @@
   <data name="Register" xml:space="preserve">
     <value>Înregistrare</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Utilizatori</value>
+  </data>
 </root>

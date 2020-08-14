@@ -140,5 +140,14 @@ namespace Licenta_V0.Resources {
                 return ResourceManager.GetString("Register", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
     }
 }

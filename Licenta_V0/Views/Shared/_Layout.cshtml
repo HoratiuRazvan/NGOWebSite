@@ -28,6 +28,7 @@
                     <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Articles, "Index", "Article")</li>
                     @if (this.User.IsInRole("Admin"))
                     {
+                        <li>@Html.ActionLink(Licenta_V0.Resources.CategoryPage.CategoriesTitle,"Index","Category")</li>
                         <li>@Html.ActionLink(Licenta_V0.Resources.MainNavbar.Management, "Management", "Home")</li>
                     }
 

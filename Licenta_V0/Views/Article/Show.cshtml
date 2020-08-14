@@ -4,3 +4,7 @@
 <div>@Model.ArticleDate</div>
 <div>@Model.ArticleDescription</div>
 <div>@Html.Raw(Model.ArticleText)</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { Model.Id})
+    @Html.ActionLink("Delete","Delete",new { Model.Id})
+</div>
